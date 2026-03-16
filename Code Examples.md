@@ -1,3 +1,5 @@
+Below are some examples of code from the project:
+
 🍳 Adding Ingredients to the Plate
 This method handles the core player interaction of adding a selected food item to the plate. It includes safety checks for input and stock levels, manages visual and audio feedback, and updates the global ingredient lists.
 
@@ -42,7 +44,7 @@ Automatically deducts from the inventory stock once added.
     AudioManager.Instance.PlaySound(soundType);
 
     foodAvailability.CheckFoodAvailability(); //in case it ran out of stock after decreasing
-}
+    }
 🧑‍🤝‍🧑 Weighted Random Customer Selection
 To ensure varied gameplay, customer types are selected using a weighted probability system. This function evaluates a pool of customers, checks if they are unlocked based on the current day, and rolls a random number against their cumulative spawn weights to choose the next customer.
 
@@ -75,7 +77,7 @@ To ensure varied gameplay, customer types are selected using a weighted probabil
     }
 
     return defaultCustomerPrefab; 
-}
+    }
 📝 Dynamic Order Generation
 This utility method dynamically generates customer orders without duplicates. It takes a desired amount of ingredients and randomly selects them from a provided pool, utilizing a HashSet to guarantee that no ingredient is picked twice for the same order.
 
