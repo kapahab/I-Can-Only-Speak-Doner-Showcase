@@ -1,14 +1,14 @@
-Below are some examples of code from the project:
+# Below are some examples of code from the project:
 
-💾 Data Management: Ingredient Scriptable Objects
+## 💾 Data Management: Ingredient Scriptable Objects
 To keep the game easily tunable and data-driven, ingredient properties are stored using Unity's ScriptableObject system. The FoodData class centralizes everything from stock levels and economy costs to minigame mechanics (like the memory reveal duration), making it easy to create and balance new ingredients without touching code.
 Key Features:
 
-Centralized economy data (unlock costs, restock costs, sell costs).
+**Centralized economy data (unlock costs, restock costs, sell costs).**
 
-Built-in methods to calculate dynamic costs based on missing stock.
+**Built-in methods to calculate dynamic costs based on missing stock.**
 
-Tracks specific minigame states, such as how long an item remains revealed.
+**Tracks specific minigame states, such as how long an item remains revealed.**
 
     [CreateAssetMenu(fileName = "FoodData", menuName = "Scriptable Objects/FoodData")]
     public class FoodData : ScriptableObject
@@ -53,15 +53,15 @@ Tracks specific minigame states, such as how long an item remains revealed.
     }
     }
     
-📡 Event-Driven Game Logic
+## 📡 Event-Driven Game Logic
 The EventManager acts as a central hub for broadcasting player actions to the rest of the game. By using C# delegates and events, the input logic is decoupled from the game systems that need to respond to those inputs (like animations, UI updates, or scoring).
 Key Features:
 
-Handles complex input interactions, like the "hold-to-serve" mechanic using timers.
+**Handles complex input interactions, like the "hold-to-serve" mechanic using timers.**
 
-Broadcasts specific events (e.g., OnFoodTrashed, OnPlateServed) for other scripts to listen to.
+**Broadcasts specific events (e.g., OnFoodTrashed, OnPlateServed) for other scripts to listen to.**
 
-Safely manages screen transitions using Coroutines to prevent frame-perfect glitches.
+**Safely manages screen transitions using Coroutines to prevent frame-perfect glitches.**
 
     public class EventManager : MonoBehaviour
     {
@@ -184,7 +184,7 @@ Safely manages screen transitions using Coroutines to prevent frame-perfect glit
     }
 
 
-🕹️ Game State Management
+## 🕹️ Game State Management
 To cleanly track what phase of gameplay the player is currently experiencing, the project relies on a GameState enum. This allows various managers to quickly check the current state and execute logic accordingly (for example, preventing kitchen inputs while the game is paused or on the drinks screen).
 
     public enum GameState
@@ -200,15 +200,15 @@ To cleanly track what phase of gameplay the player is currently experiencing, th
     }
 
 
-🍳 Adding Ingredients to the Plate
+## 🍳 Adding Ingredients to the Plate
 This method handles the core player interaction of adding a selected food item to the plate. It includes safety checks for input and stock levels, manages visual and audio feedback, and updates the global ingredient lists.
 Key Features:
 
-Validates player input and current food stock levels.
+**Validates player input and current food stock levels.**
 
-Updates the game's visuals (PutFoodOnPlate) and triggers sound effects.
+**Updates the game's visuals (PutFoodOnPlate) and triggers sound effects.**
 
-Automatically deducts from the inventory stock once added.
+**Automatically deducts from the inventory stock once added.**
 
     void AddFood()
     {
@@ -246,7 +246,7 @@ Automatically deducts from the inventory stock once added.
     }
 
 
-🧑‍🤝‍🧑 Weighted Random Customer Selection
+## 🧑‍🤝‍🧑 Weighted Random Customer Selection
 To ensure varied gameplay, customer types are selected using a weighted probability system. This function evaluates a pool of customers, checks if they are unlocked based on the current day, and rolls a random number against their cumulative spawn weights to choose the next customer.
 
     GameObject GetRandomCustomer()
@@ -281,15 +281,15 @@ To ensure varied gameplay, customer types are selected using a weighted probabil
     }
 
 
-📝 Dynamic Order Generation
+## 📝 Dynamic Order Generation
 This utility method dynamically generates customer orders without duplicates. It takes a desired amount of ingredients and randomly selects them from a provided pool, utilizing a HashSet to guarantee that no ingredient is picked twice for the same order.
 Key Features:
 
-Automatically clamps the requested amount to prevent out-of-bounds errors.
+**Automatically clamps the requested amount to prevent out-of-bounds errors.**
 
-Uses a HashSet to efficiently check for and prevent duplicate selections.
+**Uses a HashSet to efficiently check for and prevent duplicate selections.**
 
-Populates both the customer's correct type index and the total order list.
+**Populates both the customer's correct type index and the total order list.**
 
     void GenericIngredientSelector(int amount, List<IngredientType> type , List<IngredientType> correctTypeIndex) 
     {
@@ -324,4 +324,4 @@ Populates both the customer's correct type index and the total order list.
     }
 
 
-Most of the code could be better arranged, as I was not that experienced while making this project, but it really thought me what to do wrong and what to do right!
+**Most of the code could be better arranged, as I was not that experienced while making this project, but it really thought me what to do wrong and what to do right!**
