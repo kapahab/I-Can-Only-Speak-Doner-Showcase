@@ -1,13 +1,22 @@
-Below are some code and system examples used in the project:
+🍳 Adding Ingredients to the Plate
+This method handles the core player interaction of adding a selected food item to the plate. It includes safety checks for input and stock levels, manages visual and audio feedback, and updates the global ingredient lists.
 
-void AddFood()
-{
-    if (!thisFoodSelected)
+Key Features:
+
+Validates player input and current food stock levels.
+
+Updates the game's visuals (PutFoodOnPlate) and triggers sound effects.
+
+Automatically deducts from the inventory stock once added.
+
+    void AddFood()
+    {
+        if (!thisFoodSelected)
         return;
-    if (isIngredientAdded)
+        if (isIngredientAdded)
         return;
-    if (!InputManager.Instance.InteractPressed())
-        return;
+        if (!InputManager.Instance.InteractPressed())
+            return;
 
     if (foodAvailability != null)
         foodAvailability.CheckFoodAvailability();
@@ -34,13 +43,11 @@ void AddFood()
 
     foodAvailability.CheckFoodAvailability(); //in case it ran out of stock after decreasing
 }
+🧑‍🤝‍🧑 Weighted Random Customer Selection
+To ensure varied gameplay, customer types are selected using a weighted probability system. This function evaluates a pool of customers, checks if they are unlocked based on the current day, and rolls a random number against their cumulative spawn weights to choose the next customer.
 
-
-
-
-
-GameObject GetRandomCustomer()
-{
+    GameObject GetRandomCustomer()
+    {
     int totalWeight = 0;
 
     foreach (var customer in randomCustomersPool)
@@ -69,3 +76,45 @@ GameObject GetRandomCustomer()
 
     return defaultCustomerPrefab; 
 }
+📝 Dynamic Order Generation
+This utility method dynamically generates customer orders without duplicates. It takes a desired amount of ingredients and randomly selects them from a provided pool, utilizing a HashSet to guarantee that no ingredient is picked twice for the same order.
+
+Key Features:
+
+Automatically clamps the requested amount to prevent out-of-bounds errors.
+
+Uses a HashSet to efficiently check for and prevent duplicate selections.
+
+Populates both the customer's correct type index and the total order list.
+
+    void GenericIngredientSelector(int amount, List<IngredientType> type , List<IngredientType> correctTypeIndex) 
+    {
+        if (type.Count == 0)
+            return;
+
+        if (amount > type.Count)
+        {
+            Debug.LogWarning($"Attempted to select {amount} items from a list of only {type.Count}. Clamping amount to match list size.");
+            amount = type.Count;
+        }
+
+        HashSet<int> usedIndexes = new HashSet<int>();
+        for (int i = 0; i < amount; i++)
+        {
+            int index;
+            IngredientType ingredientType;
+            do
+            {
+                index = Random.Range(0, type.Count);
+                ingredientType = type[index];
+
+            } while (usedIndexes.Contains(index) || totalOrderList.Contains(ingredientType)); // Ensure no duplicates
+
+            usedIndexes.Add(index);
+            correctOrders.Add(index);
+            totalOrderList.Add(ingredientType);
+            correctTypeIndex.Add(type[index]);
+        }
+        new List<int>(usedIndexes); 
+
+    }
