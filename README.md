@@ -1,6 +1,6 @@
 # I Can Only Speak Doner 🥙
 
-https://youtu.be/i9vNcCyRj18?si=Nyt1hE1ieaFeG00H
+[Trailer!](https://youtu.be/i9vNcCyRj18?si=Nyt1hE1ieaFeG00H)
 
 **I Can Only Speak Doner** is a 2D pixel art cooking and language-learning game developed in Unity (C#). Inspired by titles like *Cook, Serve, Delicious!* and *Papers, Please*, players take on the role of an expat working in a foreign country where they do not speak the local language. 
 
@@ -27,11 +27,7 @@ This repository highlights the core architectural decisions, custom tooling, and
 ## ⚙️ Custom Tooling: Automated Localization
 To handle multiple languages (Turkish, German, Spanish, Portuguese), I built a custom Python script that leverages API integration to automatically parse, translate, and reformat CSV and JSON files directly into the game's architecture. 
 
-## 📂 Repository Structure
-* `/Assets/Scripts/Core` - Main game loop and managers.
-* `/Assets/Scripts/Entities` - Customer AI and interaction logic.
-* `/Tools/Localization` - Python automation scripts.
-
 ## 🚀 Play the Game
 A playable demo is currently available! 
-[Link to Steam Page]
+[[Link to Steam Page]
+](https://store.steampowered.com/app/4304660/I_Can_Only_Speak_Doner_Demo/)
