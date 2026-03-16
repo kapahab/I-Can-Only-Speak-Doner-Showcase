@@ -1,7 +1,7 @@
 Below are some examples of code from the project:
+
 💾 Data Management: Ingredient Scriptable Objects
 To keep the game easily tunable and data-driven, ingredient properties are stored using Unity's ScriptableObject system. The FoodData class centralizes everything from stock levels and economy costs to minigame mechanics (like the memory reveal duration), making it easy to create and balance new ingredients without touching code.
-
 Key Features:
 
 Centralized economy data (unlock costs, restock costs, sell costs).
@@ -52,9 +52,9 @@ Tracks specific minigame states, such as how long an item remains revealed.
         }
     }
     }
+    
 📡 Event-Driven Game Logic
 The EventManager acts as a central hub for broadcasting player actions to the rest of the game. By using C# delegates and events, the input logic is decoupled from the game systems that need to respond to those inputs (like animations, UI updates, or scoring).
-
 Key Features:
 
 Handles complex input interactions, like the "hold-to-serve" mechanic using timers.
@@ -182,6 +182,8 @@ Safely manages screen transitions using Coroutines to prevent frame-perfect glit
         Debug.Log("Screen switched to customer");
     }
     }
+
+
 🕹️ Game State Management
 To cleanly track what phase of gameplay the player is currently experiencing, the project relies on a GameState enum. This allows various managers to quickly check the current state and execute logic accordingly (for example, preventing kitchen inputs while the game is paused or on the drinks screen).
 
@@ -196,10 +198,10 @@ To cleanly track what phase of gameplay the player is currently experiencing, th
         PartyNight,
         LoseScreen
     }
-    
+
+
 🍳 Adding Ingredients to the Plate
 This method handles the core player interaction of adding a selected food item to the plate. It includes safety checks for input and stock levels, manages visual and audio feedback, and updates the global ingredient lists.
-
 Key Features:
 
 Validates player input and current food stock levels.
@@ -242,6 +244,8 @@ Automatically deducts from the inventory stock once added.
 
     foodAvailability.CheckFoodAvailability(); //in case it ran out of stock after decreasing
     }
+
+
 🧑‍🤝‍🧑 Weighted Random Customer Selection
 To ensure varied gameplay, customer types are selected using a weighted probability system. This function evaluates a pool of customers, checks if they are unlocked based on the current day, and rolls a random number against their cumulative spawn weights to choose the next customer.
 
@@ -275,9 +279,10 @@ To ensure varied gameplay, customer types are selected using a weighted probabil
 
     return defaultCustomerPrefab; 
     }
+
+
 📝 Dynamic Order Generation
 This utility method dynamically generates customer orders without duplicates. It takes a desired amount of ingredients and randomly selects them from a provided pool, utilizing a HashSet to guarantee that no ingredient is picked twice for the same order.
-
 Key Features:
 
 Automatically clamps the requested amount to prevent out-of-bounds errors.
