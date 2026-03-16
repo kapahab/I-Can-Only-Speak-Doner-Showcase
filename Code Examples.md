@@ -34,3 +34,38 @@ void AddFood()
 
     foodAvailability.CheckFoodAvailability(); //in case it ran out of stock after decreasing
 }
+
+
+
+
+
+GameObject GetRandomCustomer()
+{
+    int totalWeight = 0;
+
+    foreach (var customer in randomCustomersPool)
+    {
+        if (gameFlow.dayCount >= customer.unlockDay)
+        {
+            totalWeight += customer.spawnWeight;
+        }
+    }
+
+    if (totalWeight == 0) return defaultCustomerPrefab;
+
+    int randomRoll = Random.Range(0, totalWeight);
+
+    foreach (var customer in randomCustomersPool)
+    {
+        if (gameFlow.dayCount >= customer.unlockDay)
+        {
+            if (randomRoll < customer.spawnWeight)
+            {
+                return customer.prefab != null ? customer.prefab : defaultCustomerPrefab;
+            }
+            randomRoll -= customer.spawnWeight;
+        }
+    }
+
+    return defaultCustomerPrefab; 
+}
