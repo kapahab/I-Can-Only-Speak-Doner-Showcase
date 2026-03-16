@@ -1,5 +1,6 @@
 # I Can Only Speak Doner 🥙
 
+![Photo](photo.jpg)
 [Trailer!](https://youtu.be/i9vNcCyRj18?si=Nyt1hE1ieaFeG00H)
 
 **I Can Only Speak Doner** is a 2D pixel art cooking and language-learning game developed in Unity (C#). Inspired by titles like *Cook, Serve, Delicious!* and *Papers, Please*, players take on the role of an expat working in a foreign country where they do not speak the local language. 
