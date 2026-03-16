@@ -5,7 +5,7 @@
 **I Can Only Speak Doner** is a 2D pixel art cooking and language-learning game developed in Unity (C#). Inspired by titles like *Cook, Serve, Delicious!* and *Papers, Please*, players take on the role of an expat working in a foreign country where they do not speak the local language. 
 
 This repository highlights the core architectural decisions, custom tooling, and gameplay programming that brought the project to life. The whole project cannot be shared as it's a commercial product. This repository is for portfolio purpouses. I was the only programmer in the project.
-(For code examples, see Code Examples.md in this repo)
+(For code examples, see [here](CodeExamples.md))
 
 ## 🎮 Core Mechanics & Implementation
 
